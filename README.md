@@ -32,15 +32,15 @@ Dependencies:
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as
 each feature is successfully implemented. Use time stamps. Here's an example:
-08-24-2021 06:22am - Initialize netlify deployment preview.
+08-24-2021 06:22 - Initialize netlify deployment preview.
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build
 this application. -->
 <hr />
-Name of feature: <br />
+Name of feature: Locations<br />
 Estimate of time needed to complete: <br />
-Start time: <br />
+Start time: 06:56<br />
 Finish time: <br />
 Actual time needed to complete: <br />
 <hr />
