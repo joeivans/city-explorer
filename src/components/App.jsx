@@ -1,8 +1,8 @@
 import React from 'react';
 import {Container, Row} from 'react-bootstrap';
+import SearchResults from '../models/SearchResults';
 import ResultsComponent from './ResultsComponent';
 import SearchFormComponent from './SearchFormComponent';
-import SearchResults from '../models/SearchResults';
 
 
 export default class App extends React.Component {
@@ -15,13 +15,12 @@ export default class App extends React.Component {
   }
 
   /**
-   * @param {Result[]} results
+   * @param {SearchResult[]} results
    */
-  resultHandler = (results) => {
+  resultHandler = (results) =>
     this.setState({
       results: results
     });
-  };
 
   render() {
     return (

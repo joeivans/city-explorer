@@ -3,6 +3,8 @@ import {Button, Container, Form} from 'react-bootstrap';
 import SearchResult from '../models/SearchResult';
 import SearchResults from '../models/SearchResults';
 import getAsync from '../utilities/HttpClient';
+import QueryString from '../models/QueryString';
+import QueryStringParameter from '../models/QueryStringParameter';
 
 
 export default class LocationFormComponent extends React.Component {
@@ -17,19 +19,23 @@ export default class LocationFormComponent extends React.Component {
   searchFormSubmitHandler = async (event) => {
     event.preventDefault();
 
-    const BASE_URL = process.env.REACT_APP_LOCATIONIQ_BASE_URL;
-    const FORMAT = 'json';
+    const {
+      REACT_APP_LOCATIONIQ_LOCATION_DATA_BASE_URL: BASE_URL,
+      REACT_APP_LOCATIONIQ_API_KEY,
+      REACT_APP_LOCATIONIQ_APP_ID
+    } = process.env;
     const {rawSearchString: QUERY} = this.state; // <-- const QUERY = this.state.rawSearchString;
+    const FORMAT = 'json';
 
     const response = await getAsync(
       BASE_URL,
-      [
-        ['key', process.env.REACT_APP_LOCATIONIQ_API_KEY],
-        ['appid', process.env.REACT_APP_LOCATIONIQ_APP_ID],
-        ['q', QUERY],
-        ['format', FORMAT],
-        ['addressdetails', 1],
-      ]);
+      new QueryString()
+        .add(new QueryStringParameter('key', REACT_APP_LOCATIONIQ_API_KEY))
+        .add(new QueryStringParameter('appid', REACT_APP_LOCATIONIQ_APP_ID))
+        .add(new QueryStringParameter('q', QUERY))
+        .add(new QueryStringParameter('format', FORMAT))
+        .add(new QueryStringParameter('addressdetails', 1))
+    );
 
     this.props.resultHandler(this.transformResponse(response));
   };

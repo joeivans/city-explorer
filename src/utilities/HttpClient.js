@@ -5,32 +5,32 @@ import HttpResponse from '../models/HttpResponse';
 const HttpClient = {
   /**
    * Creates a URLSearchParams object from an array of string array values.
-   * @param {Array<string[]>} queryStringParams
+   * @param {QueryString} queryString
    * @returns {URLSearchParams}
    */
-  getParamsFrom(queryStringParams) {
+  getParamsFrom(queryString) {
     return new URLSearchParams(
-      queryStringParams.map(param =>
-        [param[0], param[1]]
+      queryString.parameters.map(param =>
+        [param.key, param.value]
       ));
   },
 
   /**
    * Performs a GET request.
    * @param {string} baseUrl
-   * @param {Array<string[]>} queryStringParams
+   * @param {QueryString} queryString
    * @returns {Promise<HttpResponse>}
    */
   async getAsync(
     baseUrl,
-    queryStringParams) {
+    queryString) {
     let axiosResponse;
 
     try {
       axiosResponse = await axios.get(
         baseUrl,
         {
-          params: HttpClient.getParamsFrom(queryStringParams)
+          params: HttpClient.getParamsFrom(queryString)
         }
       );
     } catch (error) {

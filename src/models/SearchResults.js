@@ -1,27 +1,26 @@
 export default class SearchResults {
   /**
-   * @param {Result[]} results
+   * @param {SearchResult[]} results
    */
   constructor(results = []) {
-    this._results.splice();
     this._results = results;
   }
 
   /**
-   * @type {Result[]}
+   * @type {SearchResult[]}
    * @private
    */
   _results = [];
 
   /**
-   * @returns {Result[]}
+   * @returns {SearchResult[]}
    */
   get results() {
     return this._results;
   }
 
   /**
-   * @param {Result[]} value
+   * @param {SearchResult[]} value
    */
   set results(value) {
     this._results = value;

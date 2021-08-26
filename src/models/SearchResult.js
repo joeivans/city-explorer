@@ -80,43 +80,6 @@ export default class SearchResult {
    */
   countryCode;
 
-/*
-  constructor(result) {
-    const {display_name, place_id, lat, lon} = result;
-    const {
-      country,
-      house_number,
-      suburb,
-      postcode,
-      state,
-      road,
-      neighbourhood,
-      county,
-      country_code,
-      state_code,
-      island,
-      city
-    } = result.address;
-
-    this.id = place_id || -1;
-    this.latitude = lat || undefined;
-    this.longitude = lon || undefined;
-    this.name = display_name || undefined;
-    this.houseNumber = house_number || undefined;
-    this.road = road || undefined;
-    this.neighborhood = neighbourhood || undefined;
-    this.suburb = suburb || undefined;
-    this.island = island || undefined;
-    this.city = city || undefined;
-    this.county = county || undefined;
-    this.state = state || undefined;
-    this.stateCode = state_code || undefined;
-    this.postalCode = postcode || undefined;
-    this.country = country || undefined;
-    this.countryCode = country_code || undefined;
-  }
-*/
-
   /**
    * @param {number} id
    * @returns {SearchResult}
