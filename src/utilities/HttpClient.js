@@ -17,35 +17,28 @@ const HttpClient = {
 
   /**
    * Performs a GET request.
-   * @param {string} baseUrl
    * @param {QueryString} queryString
    * @returns {Promise<HttpResponse>}
    */
   async getAsync(
-    baseUrl,
     queryString) {
     let axiosResponse;
 
     try {
       axiosResponse = await axios.get(
-        baseUrl,
+        queryString.baseUri,
         {
           params: HttpClient.getParamsFrom(queryString)
         }
       );
     } catch (error) {
-      // todo: add exponential backoff
       console.log(error);
     }
 
-    return HttpClient.extracted(axiosResponse);
+    return HttpClient.responseFactory(axiosResponse);
   },
 
-  /**
-   * @param {AxiosResponse<any>} axiosResponse
-   * @returns {HttpResponse}
-   */
-  extracted(axiosResponse) {
+  responseFactory(axiosResponse) {
     return new HttpResponse()
       .addContent(axiosResponse.data)
       .addResponseHeader(axiosResponse.headers)

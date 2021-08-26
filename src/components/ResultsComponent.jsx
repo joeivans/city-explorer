@@ -10,9 +10,8 @@ export default function ResultsComponent(props) {
 function conditionalRenderOnResults(props) {
   if (props.searchResults.hasResults())
     return (props.searchResults.results.map(
-      (result) =>
-        <YesResultComponent key={result.id}
-                            result={result}/>
+      result => <YesResultComponent key={result.id}
+                                    result={result}/>
     ));
 
   return (

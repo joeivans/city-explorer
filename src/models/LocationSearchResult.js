@@ -1,88 +1,96 @@
-export default class SearchResult {
+export default class LocationSearchResult {
+  /**
+   * @type {Uint8Array}
+   */
+  map;
+  /**
+   * @type {string}
+   */
+  mapUri;
   /**
    * Unique identifier for a result
-   * {number}
+   * @type {number}
    */
   id;
   /**
    * Latitude of the result
-   * {number}
+   * @type {number}
    */
   latitude;
   /**
    * Longitude of the result
-   * {number}
+   * @type {number}
    */
   longitude;
   /**
    * House name or Point of Interest (POI) such as a Cafe or School
-   * {string}
+   * @type {string}
    */
   name;
   /**
    * House or Building number
-   * {number}
+   * @type {number}
    */
   houseNumber;
   /**
    * Roads, Highways, Freeways, Motorways
-   * {string}
+   * @type {string}
    */
   road;
   /**
    * Neighbourhoods, Allotments, Quarters, Communities
-   * {string}
+   * @type {string}
    */
   neighborhood;
   /**
    * Suburbs, Subdivisions
-   * {string}
+   * @type {string}
    */
   suburb;
   /**
    * Islands, Islets
-   * {string}
+   * @type {string}
    */
   island;
   /**
    * Cities, Towns, Villages, Municipalities, Districts, Boroughs, Hamlets
-   * {string}
+   * @type {string}
    */
   city;
   /**
    * Counties
-   * {string}
+   * @type {string}
    */
   county;
   /**
    * States, Provinces, Regions, State Districts
-   * {string}
+   * @type {string}
    */
   state;
   /**
    * State or Province Code
-   * {string}
+   * @type {string}
    */
   stateCode;
   /**
    * Postal Codes, Zipcodes
-   * {string}
+   * @type {string}
    */
   postalCode;
   /**
    * Countries, Nation-states
-   * {string}
+   * @type {string}
    */
   country;
   /**
    * Country Code - 2 letter (ISO 3166-1 alpha-2)
-   * {string}
+   * @type {string}
    */
   countryCode;
 
   /**
    * @param {number} id
-   * @returns {SearchResult}
+   * @returns {LocationSearchResult}
    */
   addId(id) {
     this.id = id;
@@ -91,7 +99,7 @@ export default class SearchResult {
 
   /**
    * @param {number} latitude
-   * @returns {SearchResult}
+   * @returns {LocationSearchResult}
    */
   addLatitude(latitude) {
     this.latitude = latitude;
@@ -100,7 +108,7 @@ export default class SearchResult {
 
   /**
    * @param {number} longitude
-   * @returns {SearchResult}
+   * @returns {LocationSearchResult}
    */
   addLongitude(longitude) {
     this.longitude = longitude;
@@ -109,7 +117,7 @@ export default class SearchResult {
 
   /**
    * @param {string} name
-   * @returns {SearchResult}
+   * @returns {LocationSearchResult}
    */
   addName(name) {
     this.name = name;
@@ -118,7 +126,7 @@ export default class SearchResult {
 
   /**
    * @param {number} houseNumber
-   * @returns {SearchResult}
+   * @returns {LocationSearchResult}
    */
   addHouseNumber(houseNumber) {
     this.houseNumber = houseNumber;
@@ -127,7 +135,7 @@ export default class SearchResult {
 
   /**
    * @param {string} road
-   * @returns {SearchResult}
+   * @returns {LocationSearchResult}
    */
   addRoad(road) {
     this.road = road;
@@ -136,7 +144,7 @@ export default class SearchResult {
 
   /**
    * @param {string} neighborhood
-   * @returns {SearchResult}
+   * @returns {LocationSearchResult}
    */
   addNeighborhood(neighborhood) {
     this.neighborhood = neighborhood;
@@ -145,7 +153,7 @@ export default class SearchResult {
 
   /**
    * @param {string} suburb
-   * @returns {SearchResult}
+   * @returns {LocationSearchResult}
    */
   addSuburb(suburb) {
     this.suburb = suburb;
@@ -154,7 +162,7 @@ export default class SearchResult {
 
   /**
    * @param {string} island
-   * @returns {SearchResult}
+   * @returns {LocationSearchResult}
    */
   addIsland(island) {
     this.island = island;
@@ -163,7 +171,7 @@ export default class SearchResult {
 
   /**
    * @param {string} city
-   * @returns {SearchResult}
+   * @returns {LocationSearchResult}
    */
   addCity(city) {
     this.city = city;
@@ -172,7 +180,7 @@ export default class SearchResult {
 
   /**
    * @param {string} county
-   * @returns {SearchResult}
+   * @returns {LocationSearchResult}
    */
   addCounty(county) {
     this.county = county;
@@ -181,7 +189,7 @@ export default class SearchResult {
 
   /**
    * @param {string} state
-   * @returns {SearchResult}
+   * @returns {LocationSearchResult}
    */
   addState(state) {
     this.state = state;
@@ -190,7 +198,7 @@ export default class SearchResult {
 
   /**
    * @param {string} stateCode
-   * @returns {SearchResult}
+   * @returns {LocationSearchResult}
    */
   addStateCode(stateCode) {
     this.stateCode = stateCode;
@@ -199,7 +207,7 @@ export default class SearchResult {
 
   /**
    * @param {string} postalCode
-   * @returns {SearchResult}
+   * @returns {LocationSearchResult}
    */
   addPostalCode(postalCode) {
     this.postalCode = postalCode;
@@ -208,7 +216,7 @@ export default class SearchResult {
 
   /**
    * @param {string} country
-   * @returns {SearchResult}
+   * @returns {LocationSearchResult}
    */
   addCountry(country) {
     this.country = country;
@@ -217,10 +225,24 @@ export default class SearchResult {
 
   /**
    * @param {string} countryCode
-   * @returns {SearchResult}
+   * @returns {LocationSearchResult}
    */
   addCountryCode(countryCode) {
     this.countryCode = countryCode;
+    return this;
+  }
+
+  /**
+   * @param {Uint8Array} map
+   * @returns {LocationSearchResult}
+   */
+  addMap(map) {
+    this.map = map;
+    return this;
+  }
+
+  addMapUri(mapUri) {
+    this.mapUri = mapUri;
     return this;
   }
 }

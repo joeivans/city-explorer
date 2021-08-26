@@ -1,6 +1,6 @@
 import React from 'react';
 import {Container, Row} from 'react-bootstrap';
-import SearchResults from '../models/SearchResults';
+import LocationSearchResults from '../models/LocationSearchResults';
 import ResultsComponent from './ResultsComponent';
 import SearchFormComponent from './SearchFormComponent';
 
@@ -10,17 +10,18 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
-      results: new SearchResults(),
+      locationSearchResults: new LocationSearchResults(),
     };
   }
 
   /**
-   * @param {SearchResult[]} results
+   * @param {LocationSearchResults} locationSearchResults
    */
-  resultHandler = (results) =>
+  resultHandler = (locationSearchResults) => {
     this.setState({
-      results: results
+      locationSearchResults: locationSearchResults
     });
+  };
 
   render() {
     return (
@@ -32,7 +33,7 @@ export default class App extends React.Component {
         </Container>
         <Container className="p2 pt-5 start-50 bg-light">
           <Row>
-            <ResultsComponent searchResults={this.state.results}/>
+            <ResultsComponent searchResults={this.state.locationSearchResults}/>
           </Row>
         </Container>
       </Container>
