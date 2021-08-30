@@ -1,6 +1,7 @@
 import React from 'react';
 import {Container, Row} from 'react-bootstrap';
 import LocationSearchResults from '../models/LocationSearchResults';
+import {ErrorResultComponent} from './ErrorResultComponent';
 import ResultsComponent from './ResultsComponent';
 import SearchFormComponent from './SearchFormComponent';
 
@@ -11,6 +12,7 @@ export default class App extends React.Component {
 
     this.state = {
       locationSearchResults: new LocationSearchResults(),
+      error: null,
     };
   }
 
@@ -23,9 +25,19 @@ export default class App extends React.Component {
     });
   };
 
+  /**
+   * @param {ErrorModel} error
+   */
+  errorHandler = (error) => {
+    this.setState({
+      error: error
+    });
+  };
+
   render() {
     return (
       <Container>
+        <ErrorResultComponent error={this.state.error}/>
         <Container className="pt-5 p2 bg-info">
           <Row>
             <SearchFormComponent resultHandler={this.resultHandler}/>
