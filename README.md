@@ -14,7 +14,7 @@ information about a city.
 <!-- What are the steps that a user must take in order to build this app on
 their own machine and get it running? -->
 Clone the source repository and run `npm install && npm run`<br />
-Visit the deployed site: [https://joes-city-explorer.netlify.app](Joe's City Explorer)
+Visit the deployed site: [Joe's City Explorer](https://joes-city-explorer.netlify.app)
 
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies
@@ -23,6 +23,8 @@ information. -->
 This is a simple client application that uses asynchronous web API requests to
 various servers to query data and provide the customer with high-quality
 results.
+
+![Architecture](./docs/images/Archi.svg)
 
 Dependencies:
 - React is used to update the UI of the page.
