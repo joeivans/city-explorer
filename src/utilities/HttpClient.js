@@ -18,31 +18,29 @@ const HttpClient = {
   /**
    * Performs a GET request.
    * @param {QueryString} queryString
+   * @param {function(httpStatusCode:number)} onError
    * @returns {Promise<HttpResponse>}
    */
-  async getAsync(
-    queryString) {
-    let axiosResponse;
-
+  async getAsync(queryString, onError) {
     try {
-      axiosResponse = await axios.get(
+      const axiosResponse = await axios.get(
         queryString.baseUri,
         {
           params: HttpClient.getParamsFrom(queryString)
         }
       );
+      return HttpClient.responseFactory(axiosResponse);
     } catch (error) {
-      console.log(error);
+      onError(error);
+      return null;
     }
-
-    return HttpClient.responseFactory(axiosResponse);
   },
 
-  responseFactory(axiosResponse) {
+  responseFactory({data, headers, status}) {
     return new HttpResponse()
-      .addContent(axiosResponse.data)
-      .addResponseHeader(axiosResponse.headers)
-      .addResponseCode(axiosResponse.status);
+      .addContent(data)
+      .addResponseHeader(headers)
+      .addResponseCode(status);
   },
 };
 

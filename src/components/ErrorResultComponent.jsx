@@ -8,14 +8,22 @@ export class ErrorResultComponent extends React.Component {
 
     this.state = {
       error: this.props.error,
+      show: false,
     };
   }
 
-  toggleShowA() {
+  toggleShow = () => {
     this.setState({
-      showA: !this.state.showA
+      show: !this.state.show
     });
-  }
+    this.props.clearError();
+  };
+
+  conditionallyRender = () => {
+    if (this.props.error) {
+      this.toggleShow();
+    }
+  };
 
   render() {
     if (this.props.error === null) {
@@ -25,8 +33,8 @@ export class ErrorResultComponent extends React.Component {
     return (
       <>
         <Toast className="bg-danger"
-               show={this.props.error}
-               onClose={this.toggleShowA.bind(this)}>
+               show={this.conditionallyRender}
+               onClose={this.toggleShow}>
           <Toast.Header>
             <strong className="me-auto">{this.props.error.title}</strong>
           </Toast.Header>
